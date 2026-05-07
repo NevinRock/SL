@@ -1,0 +1,17 @@
+# Config for handpos/src/train_ctc_lstm.py
+# Example:
+# python handpos/src/train_ctc_lstm.py --train_root ... --val_root ... --test_root ... --epochs ...
+
+train_root: "E:/Project/SignLan/Data/ASL_Citizen/vectors_by_word/splits/train"
+val_root: "E:/Project/SignLan/Data/ASL_Citizen/vectors_by_word/splits/val"
+test_root: "E:/Project/SignLan/Data/ASL_Citizen/vectors_by_word/splits/test"
+save_path: "E:/Project/SignLan/handpos/checkpoints/ctc_lstm_asl_citizen_best.pt"
+epochs: 80
+batch_size: 16
+hidden_dim: 256
+num_layers: 2
+lr: 0.001
+seed: 42
+log_dir: "E:/Project/SignLan/handpos/runs/train_ctc_lstm_asl_citizen"
+run_name: ""
+tb_new_run: true

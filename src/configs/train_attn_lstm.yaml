@@ -1,0 +1,18 @@
+train_root: "E:/Project/SignLan/Data/ASL_Citizen/Dataset_20_split/train"
+val_root: "E:/Project/SignLan/Data/ASL_Citizen/Dataset_20_split/val"
+test_root: "E:/Project/SignLan/Data/ASL_Citizen/Dataset_20_split/test"
+
+save_path: "E:/Project/SignLan/handpos/checkpoints/lstm_attn_20.pt"
+
+epochs: 20
+batch_size: 16
+
+hidden_dim: 128
+num_layers: 2
+
+lr: 0.001
+num_workers: 4
+
+log_dir: "E:/Project/SignLan/Data/ASL_Citizen/Dataset_20_split"
+
+tb_new_run: true
