@@ -186,6 +186,8 @@ def main():
     latest_text = ""
     latest_topk = ""
     latest_sentence = ""
+    saved_sentences = []  # 保存历史句子
+
     stable_pred_idx = -1
     stable_count = 0
     last_commit_idx = -1
@@ -301,7 +303,28 @@ def main():
             key = cv2.waitKey(1) & 0xFF
             if key == 27:  # ESC
                 break
-            if key == ord("c"):  # clear
+
+            # Space: 保存当前句子
+            if key == 32:  # Space
+                if latest_sentence.strip():
+                    saved_sentences.append(latest_sentence)
+
+                    print("\n=== Saved Sentence ===")
+                    print(latest_sentence)
+                    print("======================\n")
+
+            # Backspace: 删除最后一个词
+            if key == 8:  # Backspace
+                if len(sentence_buffer) > 0:
+                    sentence_buffer.pop()
+                    latest_sentence = " ".join(sentence_buffer)
+
+                    print("\n=== After Delete ===")
+                    print(latest_sentence)
+                    print("====================\n")
+
+            # C: 清空
+            if key == ord("c"):
                 seq_buffer.clear()
                 prob_buffer.clear()
                 sentence_buffer.clear()
