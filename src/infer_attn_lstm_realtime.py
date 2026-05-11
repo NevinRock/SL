@@ -7,6 +7,10 @@ import numpy as np
 import torch
 import torch.nn as nn
 
+from Gloss2Sen import gloss_to_sentence
+
+
+
 SINGLE_HAND_FEATURE_DIM = 21 * 3 + 21 * 3 + 5 * 2
 
 
@@ -140,7 +144,7 @@ def format_topk_line(probs: torch.Tensor, vocab, k=5):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ckpt",  default= "../checkpoints/lstm_attn_20.pt", help="attn_lstm checkpoint 路径")
+    parser.add_argument("--ckpt",  default= "../checkpoints/lstm_attn_dvd.pt", help="attn_lstm checkpoint 路径")
     parser.add_argument("--camera", type=int, default=0, help="摄像头索引")
     parser.add_argument("--window", type=int, default=32, help="滑动窗口长度")
     parser.add_argument("--min_frames", type=int, default=12, help="最少多少帧后开始推理")
@@ -307,7 +311,16 @@ def main():
             # Space: 保存当前句子
             if key == 32:  # Space
                 if latest_sentence.strip():
-                    saved_sentences.append(latest_sentence)
+                    gloss_sentence = " ".join(sentence_buffer)
+
+                    latest_sentence = "Dealing..."
+                    print(latest_sentence)
+
+                    natural_sentence = gloss_to_sentence(gloss_sentence)
+
+                    latest_sentence = natural_sentence
+
+                    saved_sentences.append(natural_sentence)
 
                     print("\n=== Saved Sentence ===")
                     print(latest_sentence)
