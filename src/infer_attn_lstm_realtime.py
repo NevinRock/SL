@@ -144,13 +144,13 @@ def format_topk_line(probs: torch.Tensor, vocab, k=5):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ckpt",  default= "../checkpoints/lstm_attn_dvd.pt", help="attn_lstm checkpoint 路径")
+    parser.add_argument("--ckpt",  default= "../checkpoints/lstm_txy_xr.pt", help="attn_lstm checkpoint 路径")
     parser.add_argument("--camera", type=int, default=0, help="摄像头索引")
     parser.add_argument("--window", type=int, default=32, help="滑动窗口长度")
     parser.add_argument("--min_frames", type=int, default=12, help="最少多少帧后开始推理")
     parser.add_argument("--topk", type=int, default=5, help="显示 top-k")
     parser.add_argument("--smooth", type=int, default=6, help="概率平滑窗口长度")
-    parser.add_argument("--conf", type=float, default=0.55, help="显示主类别的最小置信度")
+    parser.add_argument("--conf", type=float, default=0.4, help="显示主类别的最小置信度")
     parser.add_argument("--sentence_max_words", type=int, default=20, help="句子缓冲区最大词数")
     parser.add_argument("--stable_frames", type=int, default=3, help="同一词连续命中多少帧后写入句子")
     parser.add_argument("--cooldown_frames", type=int, default=8, help="写入一个词后最少间隔帧数")
