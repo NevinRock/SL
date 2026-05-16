@@ -12,3 +12,5 @@ press `Space` to save and print the sectence
 press `Backsapce` to delete the wrong input
 
 press `Esc` to quit the ui
+
+Remember to insert your DeepSeek API key in `Gloss2Sen.py`
